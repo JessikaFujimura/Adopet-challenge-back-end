@@ -1,25 +1,20 @@
-package com.br.Adopet_challenge_backend.model;
+package com.br.Adopet_challenge_backend.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "TB_Tutor")
-public class Tutor {
+public class TutorDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
     private UUID uidTutor;
 
-    @Column(length = 200, nullable = false)
+    @NotBlank
     private String name;
 
-    @Column(length = 11, nullable = false)
+    @NotBlank
     private String phone;
 
-    @Column(nullable = false)
+    @NotBlank
     private String email;
 
     private String city;
@@ -27,10 +22,6 @@ public class Tutor {
     private String description;
 
     private String photo;
-
-    @OneToOne(mappedBy = "tutor")
-    @PrimaryKeyJoinColumn
-    private Account account;
 
     public UUID getUidTutor() {
         return uidTutor;
