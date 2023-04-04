@@ -11,7 +11,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uidAccount;
+    private Long uidAccount;
 
     @OneToOne
     @MapsId
@@ -23,11 +23,11 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private List<Message> messages;
 
-    public UUID getUidAccount() {
+    public Long getUidAccount() {
         return uidAccount;
     }
 
-    public void setUidAccount(UUID uidAccount) {
+    public void setUidAccount(Long uidAccount) {
         this.uidAccount = uidAccount;
     }
 

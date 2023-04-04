@@ -6,10 +6,7 @@ import com.br.Adopet_challenge_backend.service.TutorService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/tutors")
@@ -26,6 +23,13 @@ public class TutorController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(tutorService.saveTutor(tutorDto));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getTutorById(@PathVariable(value = "id") Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(tutorService.searchTutorById(id));
     }
 
 }

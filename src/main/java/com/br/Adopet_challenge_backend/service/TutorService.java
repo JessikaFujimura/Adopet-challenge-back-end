@@ -1,8 +1,10 @@
 package com.br.Adopet_challenge_backend.service;
 
 import com.br.Adopet_challenge_backend.dto.TutorDto;
+import com.br.Adopet_challenge_backend.exception.NotFoundException;
 import com.br.Adopet_challenge_backend.model.Tutor;
 import com.br.Adopet_challenge_backend.repository.TutorRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,10 @@ public class TutorService {
         Tutor entity = new Tutor();
         BeanUtils.copyProperties(tutorDto, entity);
         return tutorRepository.save(entity);
+    }
+
+    public Tutor searchTutorById(Long id) {
+        return tutorRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Não encontrado"));
     }
 }

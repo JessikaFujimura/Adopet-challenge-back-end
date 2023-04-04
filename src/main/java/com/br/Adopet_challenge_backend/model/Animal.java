@@ -3,7 +3,6 @@ package com.br.Adopet_challenge_backend.model;
 import jakarta.persistence.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "TB_Animal")
@@ -11,7 +10,7 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uidAnimal;
+    private Long uidAnimal;
 
     private String name;
 
@@ -28,11 +27,11 @@ public class Animal {
     @OneToMany(mappedBy = "animal")
     private List<Message> message;
 
-    public UUID getUidAnimal() {
+    public Long getUidAnimal() {
         return uidAnimal;
     }
 
-    public void setUidAnimal(UUID uidAnimal) {
+    public void setUidAnimal(Long uidAnimal) {
         this.uidAnimal = uidAnimal;
     }
 

@@ -2,8 +2,6 @@ package com.br.Adopet_challenge_backend.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "TB_Tutor")
 public class Tutor {
@@ -11,7 +9,7 @@ public class Tutor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private UUID uidTutor;
+    private Long uidTutor;
 
     @Column(length = 200, nullable = false)
     private String name;
@@ -32,11 +30,11 @@ public class Tutor {
     @PrimaryKeyJoinColumn
     private Account account;
 
-    public UUID getUidTutor() {
+    public Long getUidTutor() {
         return uidTutor;
     }
 
-    public void setUidTutor(UUID uidTutor) {
+    public void setUidTutor(Long uidTutor) {
         this.uidTutor = uidTutor;
     }
 

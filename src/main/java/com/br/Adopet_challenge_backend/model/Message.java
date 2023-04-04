@@ -2,15 +2,13 @@ package com.br.Adopet_challenge_backend.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "TB_Message")
 public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uidMessage;
+    private Long uidMessage;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -28,11 +26,11 @@ public class Message {
 
     private String messageText;
 
-    public UUID getUidMessage() {
+    public Long getUidMessage() {
         return uidMessage;
     }
 
-    public void setUidMessage(UUID uidMessage) {
+    public void setUidMessage(Long uidMessage) {
         this.uidMessage = uidMessage;
     }
 
