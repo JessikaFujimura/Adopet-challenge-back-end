@@ -8,6 +8,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TutorService {
 
@@ -26,5 +28,13 @@ public class TutorService {
     public Tutor searchTutorById(Long id) {
         return tutorRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Não encontrado"));
+    }
+
+    public List<Tutor> getAllTutors() {
+       List<Tutor> tutors = tutorRepository.findAll();
+       if (tutors.isEmpty()) {
+           throw new NotFoundException("Não encontrado");
+       }
+       return tutors;
     }
 }

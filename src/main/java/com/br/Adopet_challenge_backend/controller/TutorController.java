@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tutors")
 public class TutorController {
@@ -32,4 +34,10 @@ public class TutorController {
                 .body(tutorService.searchTutorById(id));
     }
 
+    @GetMapping
+    public ResponseEntity<List<Tutor>> getListOfTutors(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(tutorService.getAllTutors());
+    }
 }
