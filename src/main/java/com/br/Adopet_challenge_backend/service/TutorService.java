@@ -7,8 +7,10 @@ import com.br.Adopet_challenge_backend.repository.TutorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TutorService {
@@ -19,6 +21,7 @@ public class TutorService {
         this.tutorRepository = tutorRepository;
     }
 
+    @Transactional
     public Tutor saveTutor(TutorDto tutorDto) {
         Tutor entity = new Tutor();
         BeanUtils.copyProperties(tutorDto, entity);
@@ -38,9 +41,20 @@ public class TutorService {
        return tutors;
     }
 
+    @Transactional
     public Tutor updateTutor(TutorDto tutorDto) {
         Tutor entity = searchTutorById(tutorDto.getUidTutor());
         BeanUtils.copyProperties(tutorDto, entity);
         return tutorRepository.save(entity);
+    }
+
+    @Transactional
+    public String deleteTutor(Long id) {
+        Optional<Tutor> entity = tutorRepository.findById(id);
+        if(entity.isPresent()){
+            tutorRepository.deleteById(id);
+            return "Tutor excluido com sucesso!";
+        }
+        return "Exclusão falhou!";
     }
 }

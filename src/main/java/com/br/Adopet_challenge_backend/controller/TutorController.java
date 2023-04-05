@@ -47,4 +47,10 @@ public class TutorController {
         tutorDto.setUidTutor(id);
         return ResponseEntity.status(HttpStatus.OK).body(tutorService.updateTutor(tutorDto));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTutor(@PathVariable(value = "id") Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(tutorService.deleteTutor(id));
+    }
+
 }
