@@ -40,4 +40,11 @@ public class TutorController {
                 .status(HttpStatus.OK)
                 .body(tutorService.getAllTutors());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Tutor> updateTutor(@PathVariable(value = "id") Long id,
+                                             @RequestBody TutorDto tutorDto){
+        tutorDto.setUidTutor(id);
+        return ResponseEntity.status(HttpStatus.OK).body(tutorService.updateTutor(tutorDto));
+    }
 }

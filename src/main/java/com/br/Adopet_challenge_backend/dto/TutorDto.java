@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class TutorDto {
 
-    private UUID uidTutor;
+    private Long uidTutor;
 
     @NotBlank
     private String name;
@@ -23,11 +23,11 @@ public class TutorDto {
 
     private String photo;
 
-    public UUID getUidTutor() {
+    public Long getUidTutor() {
         return uidTutor;
     }
 
-    public void setUidTutor(UUID uidTutor) {
+    public void setUidTutor(Long uidTutor) {
         this.uidTutor = uidTutor;
     }
 

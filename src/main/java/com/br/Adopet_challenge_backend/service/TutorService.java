@@ -37,4 +37,10 @@ public class TutorService {
        }
        return tutors;
     }
+
+    public Tutor updateTutor(TutorDto tutorDto) {
+        Tutor entity = searchTutorById(tutorDto.getUidTutor());
+        BeanUtils.copyProperties(tutorDto, entity);
+        return tutorRepository.save(entity);
+    }
 }
